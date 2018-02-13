@@ -69,8 +69,20 @@ function SnakeJS(parentElement, config) {
 		engine.resume();
 	};
 
-	this.move = function(keyCode){
-		engine.move(keyCode)
+	this.move = function (moveDirection) {
+
+		if (moveDirection == "up") {
+			engine.move(38);
+		}
+		else if (moveDirection == "left") {
+			engine.move(37);
+		}
+		else if (moveDirection == "down") {
+			engine.move(40);
+		}
+		else if (moveDirection == "right") {
+			engine.move(39);
+		}
 	}
 
 	this.getHighScore = function () {
@@ -135,7 +147,7 @@ function SnakeJS(parentElement, config) {
 			return highScore;
 		};
 
-		this.move = function(keyCode){
+		this.move = function (keyCode) {
 			inputInterface.handleArrowKeyPressByCode(keyCode);
 		}
 

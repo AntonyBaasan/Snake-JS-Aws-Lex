@@ -3,18 +3,7 @@ var fulFillmentCallBack = function (param) {
 	if (!param)
 		return;
 
-	if (param.slots.Direction == "up") {
-		snakeGame.move(38);
-	}
-	else if (param.slots.Direction == "left") {
-		snakeGame.move(37);
-	}
-	else if (param.slots.Direction == "down") {
-		snakeGame.move(40);
-	}
-	else if (param.slots.Direction == "right") {
-		snakeGame.move(39);
-	}
+	snakeGame.move(param.slots.Direction);
 };
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -38,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 }, true);
 
-function onChatClick(){
+function onChatClick() {
 	event.preventDefault();
 	event.stopPropagation();
 	lexApp.sendChat(fulFillmentCallBack);
