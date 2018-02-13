@@ -25,6 +25,8 @@
     </div>
 
     <div>
+        IdentityPoolId:
+        <input onchange="setCredential(this.value)"></input>
         <div id="conversation" style="width: 400px; height: 150px; border: 1px solid #ccc; background-color: #eee; padding: 4px; overflow: scroll"></div>
         <form id="chatform" style="margin-top: 10px" onsubmit="return onChatClick()">
             <input type="text" id="wisdom" size="80" value="" placeholder="I need a hotel room">

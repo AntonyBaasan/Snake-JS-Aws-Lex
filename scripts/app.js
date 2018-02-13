@@ -34,6 +34,10 @@ function onChatClick() {
 	return false;
 }
 
+function setCredential(code){
+	lexApp.setConfig(code)
+}
+
 
 
 

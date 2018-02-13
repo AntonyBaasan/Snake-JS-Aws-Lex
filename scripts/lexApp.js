@@ -1,12 +1,7 @@
 var lexApp = (function () {
     // Initialize the Amazon Cognito credentials provider
-    AWS.config.region = 'us-east-1'; // Region
-    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-        // Provide your Pool Id here
-        IdentityPoolId: '' // BotPool
-    });
 
-    var lexruntime = new AWS.LexRuntime();
+    var lexruntime;
     var lexUserId = 'prophix-helper-demo-' + Date.now();
     var sessionAttributes = {
         "UserName": "Antony",
@@ -33,6 +28,11 @@ var lexApp = (function () {
     }
 
     function sendChat(callBack) {
+        if(lexruntime == undefined) {
+            console.log("Please insert lex identity pool!")
+            return;
+        }
+
         // if there is text to be sent...
         var wisdomText = document.getElementById('wisdom');
         if (wisdomText && wisdomText.value && wisdomText.value.trim().length > 0) {
@@ -69,6 +69,16 @@ var lexApp = (function () {
                 wisdomText.locked = false;
             });
         }
+    }
+
+    function setConfig(code) {
+        AWS.config.region = 'us-east-1'; // Region
+        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+            // Provide your Pool Id here
+            IdentityPoolId: code // BotPool
+        });
+        
+        lexruntime = new AWS.LexRuntime();
     }
 
     function showResponse(lexResponse, callBack) {
@@ -117,6 +127,11 @@ var lexApp = (function () {
     }
 
     function sendPostContent(audioBlob, callBack) {
+        if(lexruntime == undefined) {
+            console.log("Please insert lex identity pool!")
+            return;
+        }
+
         if (audioBlob) {
             // send it to the Lex runtime
             var params = {
@@ -175,7 +190,8 @@ var lexApp = (function () {
     return {
         sendChat: sendChat,
         startRecording: startRecording,
-        stopRecording: stopRecording
+        stopRecording: stopRecording,
+        setConfig: setConfig
     }
 
 })();
