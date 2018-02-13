@@ -8,7 +8,9 @@ var fulFillmentCallBack = function (param) {
 
 document.addEventListener("DOMContentLoaded", function () {
 	// set the focus to the input box
-	document.getElementById("wisdom").focus();
+	var textInput = document.getElementById("wisdom");
+	if(textInput)
+		textInput.focus();
 
 	// The DOM-element which will hold the playfield
 	// If you are using jQuery, you can use < var element = $("#parent"); > instead

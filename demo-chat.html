@@ -11,7 +11,7 @@
     <script src="scripts/recorder.js" type="text/javascript"></script>
     <script src="scripts/snake-js.js" type="text/javascript"></script>
     <script src="scripts/utility.js" type="text/javascript"></script>
-    <script src="scripts/lexApp.js" type="text/javascript"></script>
+    <script src="scripts/lexApp-chat.js" type="text/javascript"></script>
     <script src="scripts/app.js" type="text/javascript"></script>
 </head>
 
@@ -29,14 +29,9 @@
         <input onchange="setCredential(this.value)"></input>
         <div id="conversation" style="width: 400px; height: 150px; border: 1px solid #ccc; background-color: #eee; padding: 4px; overflow: scroll"></div>
         <form id="chatform" style="margin-top: 10px" onsubmit="return onChatClick()">
-            <input type="text" id="wisdom" size="80" value="" placeholder="I need a hotel room">
+            <input type="text" id="wisdom" size="80" value="" placeholder="">
         </form>
 
-        <button onclick="lexApp.startRecording(this);">record</button>
-        <button onclick="lexApp.stopRecording(this, fulFillmentCallBack);" disabled>stop</button>
-
-        <h3>Recordings</h3>
-        <ul id="recordingslist"></ul>
     </div>
 
 </body>

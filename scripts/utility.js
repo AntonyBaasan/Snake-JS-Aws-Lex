@@ -106,3 +106,25 @@ function playAudioResponse(audioStream) {
         audioElement.play();
     }
 }
+
+function showResponse(lexResponse, callBack) {
+    console.log(lexResponse);
+    var conversationDiv = document.getElementById('conversation');
+    var responsePara = document.createElement("P");
+    responsePara.className = 'lexResponse';
+
+    if (lexResponse.message) {
+        responsePara.appendChild(document.createTextNode(lexResponse.message));
+        responsePara.appendChild(document.createElement('br'));
+    }
+
+    if (lexResponse.dialogState === 'ReadyForFulfillment') {
+        responsePara.appendChild(document.createTextNode('Ready for fulfillment'));
+        callBack(lexResponse);
+    } else {
+        responsePara.appendChild(document.createTextNode('(' + lexResponse.dialogState + ')'));
+    }
+
+    conversationDiv.appendChild(responsePara);
+    conversationDiv.scrollTop = conversationDiv.scrollHeight;
+}
